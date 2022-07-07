@@ -17,12 +17,13 @@ class SMatrix {
     public:
 	// rule of 5
 	constexpr SMatrix() = default;
-	constexpr SMatrix(SMatrix const&)=default;
-	constexpr SMatrix(SMatrix&&)=default;
-	constexpr SMatrix& operator=(SMatrix&&)=default;
-	constexpr SMatrix& operator=(SMatrix const&)=default;
+	constexpr SMatrix(SMatrix const&) = default;
+	constexpr SMatrix(SMatrix&&) = default;
+	constexpr SMatrix& operator=(SMatrix&&) = default;
+	constexpr SMatrix& operator=(SMatrix const&) = default;
 	constexpr SMatrix(std::initializer_list<Number> elems) {
-		assert(static_cast<int>(elems.size()) == lines() * columns() && "Initializer size does not match required size.");
+		assert(static_cast<int>(elems.size()) == lines() * columns() &&
+		       "Initializer size does not match required size.");
 		std::copy(elems.begin(), elems.end(), arr_.begin());
 	}
 	constexpr SMatrix(std::initializer_list<std::initializer_list<Number>> elems) {
@@ -49,8 +50,13 @@ class SMatrix {
 	}
 	template <typename U = Number>
 	constexpr typename std::enable_if_t<nb_lines == 1 || nb_columns == 1, U&> operator()(int num) {
-		assert((nb_columns > 1 && num < columns()) || (nb_lines > 1 && num < nb_lines) && "Index of vector out of range.");
+		assert((nb_columns > 1 && num < columns()) ||
+		       (nb_lines > 1 && num < nb_lines) && "Index of vector out of range.");
 		return arr_[num];
+	}
+	template <typename U = Number, typename std::enable_if_t<nb_lines == 1 && nb_columns == 1, U&>>
+	constexpr operator Number() const {
+		return arr_[0];
 	}
 
 	// infos
@@ -70,6 +76,26 @@ class SMatrix {
 			arr_[i] += oth.arr_[i];
 		return *this;
 	}
+	template <typename N, int oth_col>
+	constexpr SMatrix<Number, nb_lines, nb_columns>& operator*=(SMatrix<N, nb_columns, oth_col> const& oth) {
+		for (int i = 0; i < nb_lines; ++i) {
+			for (int j = 0; j < nb_columns; ++j) {
+				auto tmp = Number{};
+				for (int k = 0; k < nb_columns; ++k) {
+					tmp += *this(i, k) * oth(k, j);
+				}
+				this(i, j) = tmp;
+			}
+		}
+		return *this;
+	}
+	template <typename K>
+	constexpr SMatrix<Number, nb_lines, nb_columns>& operator*=(K&& val) {
+		for (auto& e : arr_)
+			e *= val;
+		return *this;
+	}
+
 };
 
 #endif

@@ -32,5 +32,3 @@ BENCHMARK(square_matrix_product<float, 64>);
 BENCHMARK(square_matrix_product<float, 128>);
 BENCHMARK(square_matrix_product<float, 256>);
 BENCHMARK(square_matrix_product<float, 512>);
-
-
