@@ -76,19 +76,6 @@ class SMatrix {
 			arr_[i] += oth.arr_[i];
 		return *this;
 	}
-	template <typename N, int oth_col>
-	constexpr SMatrix<Number, nb_lines, nb_columns>& operator*=(SMatrix<N, nb_columns, oth_col> const& oth) {
-		for (int i = 0; i < nb_lines; ++i) {
-			for (int j = 0; j < nb_columns; ++j) {
-				auto tmp = Number{};
-				for (int k = 0; k < nb_columns; ++k) {
-					tmp += *this(i, k) * oth(k, j);
-				}
-				this(i, j) = tmp;
-			}
-		}
-		return *this;
-	}
 	template <typename K>
 	constexpr SMatrix<Number, nb_lines, nb_columns>& operator*=(K&& val) {
 		for (auto& e : arr_)

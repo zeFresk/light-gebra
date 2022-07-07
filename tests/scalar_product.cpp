@@ -1,4 +1,4 @@
-/* Tests Matrix product */
+/* Tests Matrix scalar product */
 
 #include "gtest/gtest.h"
 //#include "gmock/gmock.h"
