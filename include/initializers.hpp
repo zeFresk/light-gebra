@@ -10,4 +10,13 @@ constexpr void eye(SMatrix<Number, lin, col>& mat) {
 			mat(i, j) = Number{static_cast<int>(i == j)};
 }
 
+template <typename Number, int n>
+constexpr SMatrix<Number, n, n> identity() {
+	SMatrix<Number, n, n> ret;
+	for (int i = 0; i < n; ++i)
+		for (int j = 0; j < n; ++j)
+			ret(i, j) = Number{static_cast<int>(i == j)};
+	return ret;
+}
+
 #endif

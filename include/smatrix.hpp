@@ -54,7 +54,7 @@ class SMatrix {
 		       (nb_lines > 1 && num < nb_lines) && "Index of vector out of range.");
 		return arr_[num];
 	}
-	template <typename U = Number, typename std::enable_if_t<nb_lines == 1 && nb_columns == 1, U&>>
+	template <typename U = Number, typename = std::enable_if_t<nb_lines == 1 && nb_columns == 1, U&>>
 	constexpr operator Number() const {
 		return arr_[0];
 	}
@@ -82,7 +82,6 @@ class SMatrix {
 			e *= val;
 		return *this;
 	}
-
 };
 
 #endif
