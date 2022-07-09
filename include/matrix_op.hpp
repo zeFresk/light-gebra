@@ -6,7 +6,7 @@
 template <typename N, int l, int c>
 using Matrix = SMatrix<N, l, c>;
 
-template <typename Number, int lin_lhs, int col, int col_rhs /*, std::enable_if_t<lin_lhs != 1 && col_rhs != 1>*/>
+template <typename Number, int lin_lhs, int col, int col_rhs>
 constexpr Matrix<Number, lin_lhs, col_rhs> operator*(Matrix<Number, lin_lhs, col> const& lhs,
 						 Matrix<Number, col, col_rhs> const& rhs) {
 	SMatrix<Number, lin_lhs, col_rhs> ret;
@@ -20,15 +20,6 @@ constexpr Matrix<Number, lin_lhs, col_rhs> operator*(Matrix<Number, lin_lhs, col
 	}
 	return ret;
 }
-
-/*template <typename Number, int n>
-constexpr Number operator*(Matrix<Number, 1, n> const& lhs, Matrix<Number, n, 1> const& rhs)
-{
-	Number ret{};
-	for (int k = 0; k < n; ++k)
-		ret += lhs(0, k) * rhs(k, 0);
-	return ret;
-}*/
 
 template <typename Number, int lin, int col>
 constexpr Matrix<Number, lin, col> operator+(Matrix<Number, lin, col> const& lhs, Matrix<Number, lin, col> const& rhs) {
