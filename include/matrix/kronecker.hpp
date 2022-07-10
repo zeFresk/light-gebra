@@ -1,7 +1,7 @@
 #ifndef LIGHTGEBRA_MATRIX_KRONECKER_HPP
 #define LIGHTGEBRA_MATRIX_KRONECKER_HPP
 
-#include "matrix.hpp"
+#include "matrix/matrix.hpp"
 
 template <typename NumberLeft, typename NumberRight, int m, int n, int p, int q>
 constexpr Matrix<decltype(std::declval<NumberLeft>() * std::declval<NumberRight>()), p * m, q * n>

@@ -1,6 +1,7 @@
-#include "matrix.hpp"
-#include "product.hpp"
-#include "pow.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/product.hpp"
+#include "matrix/operations.hpp"
+#include "maths/pow.hpp"
 
 #include <benchmark/benchmark.h>
 

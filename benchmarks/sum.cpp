@@ -1,5 +1,5 @@
-#include "matrix.hpp"
-#include "sum.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/sum.hpp"
 
 #include <benchmark/benchmark.h>
 

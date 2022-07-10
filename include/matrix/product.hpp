@@ -1,7 +1,7 @@
 #ifndef LIGHTGEBRA_MATRIX_PRODUCT_HPP
 #define LIGHTGEBRA_MATRIX_PRODUCT_HPP
 
-#include "matrix.hpp"
+#include "matrix/matrix.hpp"
 
 template <typename Number, int lin_lhs, int col, int col_rhs>
 constexpr Matrix<Number, lin_lhs, col_rhs> operator*(Matrix<Number, lin_lhs, col> const& lhs,

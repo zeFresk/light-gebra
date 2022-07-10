@@ -1,5 +1,5 @@
-#include "matrix.hpp"
-#include "kronecker.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/kronecker.hpp"
 
 #include <benchmark/benchmark.h>
 

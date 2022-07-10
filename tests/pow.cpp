@@ -3,9 +3,9 @@
 #include "gtest/gtest.h"
 //#include "gmock/gmock.h"
 
-#include "matrix.hpp"
-#include "product.hpp"
-#include "pow.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/operations.hpp"
+#include "maths/pow.hpp"
 
 TEST(MatrixPower, increasing_powers) {
 	Matrix<float, 2, 2> lhs{ { 1, 2 }, { 3, 4 } };

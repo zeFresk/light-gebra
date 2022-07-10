@@ -3,8 +3,8 @@
 #include "gtest/gtest.h"
 //#include "gmock/gmock.h"
 
-#include "matrix.hpp"
-#include "kronecker.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/kronecker.hpp"
 
 #include <complex>
 

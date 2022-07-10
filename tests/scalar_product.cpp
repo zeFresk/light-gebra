@@ -3,8 +3,8 @@
 #include "gtest/gtest.h"
 //#include "gmock/gmock.h"
 
-#include "matrix.hpp"
-#include "product.hpp"
+#include "matrix/matrix.hpp"
+#include "matrix/product.hpp"
 
 #include <complex>
 

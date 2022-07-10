@@ -1,7 +1,7 @@
 #ifndef LIGHTGEBRA_INITIALIZERS_HPP
 #define LIGHTGEBRA_INITIALIZERS_HPP
 
-#include <matrix.hpp>
+#include "matrix/matrix.hpp"
 
 template <typename Number, int lin, int col>
 constexpr void eye(Matrix<Number, lin, col>& mat) {
