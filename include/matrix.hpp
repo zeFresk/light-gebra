@@ -1,5 +1,5 @@
-#ifndef LIGHTGEBRA_SMATRIX_HPP
-#define LIGHTGEBRA_SMATRIX_HPP
+#ifndef LIGHTGEBRA_MATRIX_HPP
+#define LIGHTGEBRA_MATRIX_HPP
 
 #include <array>
 #include <algorithm>
@@ -7,7 +7,7 @@
 #include <cassert>
 
 template <typename Number, int nb_lines, int nb_columns>
-class SMatrix {
+class Matrix {
 	static_assert(nb_lines > 0, "Incorrect number of lines.");
 	static_assert(nb_columns > 0, "Incorrect number of columns.");
 
@@ -16,17 +16,17 @@ class SMatrix {
 
     public:
 	// rule of 5
-	constexpr SMatrix() = default;
-	constexpr SMatrix(SMatrix const&) = default;
-	constexpr SMatrix(SMatrix&&) = default;
-	constexpr SMatrix& operator=(SMatrix&&) = default;
-	constexpr SMatrix& operator=(SMatrix const&) = default;
-	constexpr SMatrix(std::initializer_list<Number> elems) {
+	constexpr Matrix() = default;
+	constexpr Matrix(Matrix const&) = default;
+	constexpr Matrix(Matrix&&) = default;
+	constexpr Matrix& operator=(Matrix&&) = default;
+	constexpr Matrix& operator=(Matrix const&) = default;
+	constexpr Matrix(std::initializer_list<Number> elems) {
 		assert(static_cast<int>(elems.size()) == lines() * columns() &&
 		       "Initializer size does not match required size.");
 		std::copy(elems.begin(), elems.end(), arr_.begin());
 	}
-	constexpr SMatrix(std::initializer_list<std::initializer_list<Number>> elems) {
+	constexpr Matrix(std::initializer_list<std::initializer_list<Number>> elems) {
 		int i = 0;
 		for (auto const& line : elems) {
 			for (auto const& e : line) {
@@ -71,13 +71,13 @@ class SMatrix {
 	constexpr decltype(arr_.cend()) cend() const { return arr_.end(); }
 
 	// ops
-	constexpr SMatrix<Number, nb_lines, nb_columns>& operator+=(SMatrix<Number, nb_lines, nb_columns> const& oth) {
+	constexpr Matrix<Number, nb_lines, nb_columns>& operator+=(Matrix<Number, nb_lines, nb_columns> const& oth) {
 		for (int i = 0; i < static_cast<int>(arr_.size()); ++i)
 			arr_[i] += oth.arr_[i];
 		return *this;
 	}
 	template <typename K>
-	constexpr SMatrix<Number, nb_lines, nb_columns>& operator*=(K&& val) {
+	constexpr Matrix<Number, nb_lines, nb_columns>& operator*=(K&& val) {
 		for (auto& e : arr_)
 			e *= val;
 		return *this;

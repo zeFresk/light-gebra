@@ -1,4 +1,5 @@
-#include "matrix_op.hpp"
+#include "matrix.hpp"
+#include "product.hpp"
 
 #include <benchmark/benchmark.h>
 
@@ -7,7 +8,7 @@
 template <typename Number, int n>
 static void square_matrix_product(benchmark::State& state) {
 	// init
-	SMatrix<Number, n, n> lhs, rhs;
+	Matrix<Number, n, n> lhs, rhs;
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_real_distribution<float> dis(-1.f, 1.f);

@@ -1,15 +1,12 @@
-#ifndef LIGHTGEBRA_MATRIX_OP_HPP
-#define LIGHTGEBRA_MATRIX_OP_HPP
+#ifndef LIGHTGEBRA_MATRIX_PRODUCT_HPP
+#define LIGHTGEBRA_MATRIX_PRODUCT_HPP
 
-#include "smatrix.hpp"
-
-template <typename N, int l, int c>
-using Matrix = SMatrix<N, l, c>;
+#include "matrix.hpp"
 
 template <typename Number, int lin_lhs, int col, int col_rhs>
 constexpr Matrix<Number, lin_lhs, col_rhs> operator*(Matrix<Number, lin_lhs, col> const& lhs,
 						 Matrix<Number, col, col_rhs> const& rhs) {
-	SMatrix<Number, lin_lhs, col_rhs> ret;
+	Matrix<Number, lin_lhs, col_rhs> ret;
 	for (int i = 0; i < lin_lhs; ++i) {
 		for (int j = 0; j < col_rhs; ++j) {
 			ret(i, j) = Number{};
@@ -18,13 +15,6 @@ constexpr Matrix<Number, lin_lhs, col_rhs> operator*(Matrix<Number, lin_lhs, col
 			}
 		}
 	}
-	return ret;
-}
-
-template <typename Number, int lin, int col>
-constexpr Matrix<Number, lin, col> operator+(Matrix<Number, lin, col> const& lhs, Matrix<Number, lin, col> const& rhs) {
-	Matrix<Number, lin, col> ret{lhs};
-	ret += rhs;
 	return ret;
 }
 
