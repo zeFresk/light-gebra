@@ -34,7 +34,7 @@ class Matrix {
 				arr_[i++] = e;
 			}
 		}
-		assert(i + 1 == lines() * columns() && "Not enough elemenrs provided.");
+		assert(i == lines() * columns() && "Not enough elemenrs provided.");
 	}
 
 	// access operator

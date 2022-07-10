@@ -4,5 +4,6 @@
 #include "matrix.hpp"
 #include "product.hpp"
 #include "sum.hpp"
+#include "pow.hpp"
 
 #endif
