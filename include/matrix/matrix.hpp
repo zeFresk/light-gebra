@@ -76,6 +76,11 @@ class Matrix {
 			arr_[i] += oth.arr_[i];
 		return *this;
 	}
+	constexpr Matrix<Number, nb_lines, nb_columns>& operator-=(Matrix<Number, nb_lines, nb_columns> const& oth) {
+		for (int i = 0; i < static_cast<int>(arr_.size()); ++i)
+			arr_[i] += oth.arr_[i];
+		return *this;
+	}
 	template <typename K>
 	constexpr Matrix<Number, nb_lines, nb_columns>& operator*=(K&& val) {
 		for (auto& e : arr_)
