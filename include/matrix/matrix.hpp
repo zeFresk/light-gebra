@@ -54,6 +54,12 @@ class Matrix {
 		       (nb_lines > 1 && num < nb_lines) && "Index of vector out of range.");
 		return arr_[num];
 	}
+	template <typename U = Number>
+	constexpr typename std::enable_if_t<nb_lines == 1 || nb_columns == 1, U const&> operator()(int num) const {
+		assert((nb_columns > 1 && num < columns()) ||
+		       (nb_lines > 1 && num < nb_lines) && "Index of vector out of range.");
+		return arr_[num];
+	}
 	template <typename U = Number, typename = std::enable_if_t<nb_lines == 1 && nb_columns == 1, U&>>
 	constexpr operator Number() const {
 		return arr_[0];
