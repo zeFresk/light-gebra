@@ -12,7 +12,9 @@
 template <int precision = 4, typename Number = float>
 constexpr Number sqrt(Number x) {
 	using raw_t = std::remove_cv_t<std::remove_reference_t<Number>>;
-	assert(x > raw_t{} && "Expected positive x");
+	assert(x >= raw_t{} && "Expected positive x");
+	if (x == raw_t{})
+		return raw_t{};
 
 	// reduce to [1, 4)
 	int n = 0;

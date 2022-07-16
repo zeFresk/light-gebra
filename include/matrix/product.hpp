@@ -29,4 +29,9 @@ constexpr Matrix<Number, lin, col> operator*(K&& val, Matrix<Number, lin, col> c
 	return lhs * val;
 }
 
+template <typename K, typename Number, int lin, int col>
+constexpr Matrix<Number, lin, col> operator/(Matrix<Number, lin, col> const& lhs, K&& val) {
+	return K{1}/val * lhs;
+}
+
 #endif
