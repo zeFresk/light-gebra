@@ -39,7 +39,7 @@ add_library(Headers INTERFACE)
 target_include_directories(Headers INTERFACE ${INCLUDE_DIR})
 
 #Setting C++ flags
-target_compile_features(Headers INTERFACE cxx_std_14)
+target_compile_features(Headers INTERFACE cxx_std_20)
 target_compile_options(Headers INTERFACE
 	$<$<CXX_COMPILER_ID:MSVC>:/W4>
 	$<$<CXX_COMPILER_ID:Clang,GNU>:-Wall -Wextra -Wpedantic>
