@@ -15,4 +15,9 @@ kron(Matrix<NumberLeft, m, n> const& lhs, Matrix<NumberRight, p, q> const& rhs) 
 	return ret;
 }
 
+template <typename NumberLeft, typename NumberMid, typename NumberRight, int m, int n, int p, int q, int r, int s, typename... Args>
+constexpr auto kron(Matrix<NumberLeft, m, n> const& lhs, Matrix<NumberMid, p, q> const& mid, Matrix<NumberRight, r, s> const& rhs, Args&&... args) {
+	return kron(kron(lhs, mid), rhs, std::forward<Args>(args)...);
+}
+
 #endif

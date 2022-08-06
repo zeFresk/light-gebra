@@ -51,3 +51,11 @@ TEST(Initialization, identity_float_big) {
 		for (int j = 0; j < size; ++j)
 			EXPECT_FLOAT_EQ(id(i, j), (i == j) ? 1.f : 0.f);
 }
+
+TEST(Initialization, identity_complex) {
+	constexpr int size = 8;
+	auto id = identity<std::complex<float>, size>();
+	for (int i = 0; i < size; ++i)
+		for (int j = 0; j < size; ++j)
+			EXPECT_EQ(id(i, j), (i == j) ? 1.f : 0.f);
+}

@@ -42,3 +42,29 @@ TEST(MatrixKroneckerProduct, mixed_dimensions) {
 		for (int j = 0; j < expected.columns(); ++j)
 			EXPECT_EQ(ret(i, j), expected(i, j));
 }
+
+TEST(MatrixKroneckerProduct, variadic_kron) {
+	Matrix<int, 2, 2> one;
+	Matrix<int, 3, 3> two;
+	Matrix<int, 4, 4> three;
+	Matrix<int, 5, 5> four;
+
+	int i = 1;
+	for (auto& e : one)
+		e = i++;
+	for (auto& e : two)
+		e = i++;
+	for (auto& e : three)
+		e = i++;
+	for (auto& e : four)
+		e = i++;
+
+	auto expected = kron(kron(kron(one, two), three), four);
+	auto ret = kron(one, two, three, four);
+
+	ASSERT_EQ(ret.lines(), expected.lines());
+	ASSERT_EQ(ret.columns(), expected.columns());
+	for (int i = 0; i < expected.lines(); ++i)
+		for (int j = 0; j < expected.columns(); ++j)
+			EXPECT_EQ(ret(i, j), expected(i, j));
+}
